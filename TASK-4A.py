@@ -2,27 +2,28 @@
 from collections import defaultdict
 
 graphTer = {
-    '6' : ['11' , '3' ],
-    '11' : ['8','1'],
-    '8' : [],
-    '1' : ['5'],
-    '5' : [],
-    '3' : ['12','9'],
-    '12' : ['2','15'],
-    '9' : ['7'],
-    '2' : ['19','4'],
-    '15' : [],
-    '7' : [],
-    '19' : [],
-    '4' : ['17','13'],
+    '6': ['11', '3'],
+    '11': ['8', '1'],
+    '8': [],
+    '1': ['5'],
+    '5': [],
+    '3': ['12', '9'],
+    '12': ['2', '15'],
+    '9': ['7'],
+    '2': ['19', '4'],
+    '15': [],
+    '7': [],
+    '19': [],
+    '4': ['17', '13'],
     '17': [],
-    '13' : ['31'],
-    '31' : []
+    '13': ['31'],
+    '31': []
 }
 print(graphTer)
-visited = [] # List for visited nodes.
-queue = []     #Initialize a queue
+visited = []  # List for visited nodes.
+queue = []  # Initialize a queue
 visitedSet = set()
+
 
 class Graph():
     def __init__(self):
@@ -59,6 +60,7 @@ edges = [
 for edge in edges:
     graph.add_edge(*edge)
 
+
 def breadthFirst(visited, queue, graphTer, node):
 
     print("This is the breadth First traverse : ")
@@ -68,7 +70,7 @@ def breadthFirst(visited, queue, graphTer, node):
 
     while queue:
         k = queue.pop(0)
-        print (k  , end = " ->")
+        print(k, end=" ->")
 
         for nextnodes in graphTer[k]:
             if nextnodes not in visited:
@@ -76,17 +78,18 @@ def breadthFirst(visited, queue, graphTer, node):
                 queue.append(nextnodes)
     return
 
-def deapthFirst(visited, graph, node):  #function for dfs
+
+def deapthFirst(visited, graph, node):  # function for dfs
     if node not in visited:
-        print (node)
+        print(node)
         visited.add(node)
         for x in graph[node]:
             deapthFirst(visited, graph, x)
 
-def AStar(graph,initial,end):
+
+def AStar(graph, initial, end):
     # shortest paths is a dict of nodes
     # whose value is a tuple of (previous node, weight)
-    print("De bug")
     shortest_paths = {initial: (None, 0)}
     current_node = initial
     visited = set()
@@ -97,7 +100,8 @@ def AStar(graph,initial,end):
         weight_to_current_node = shortest_paths[current_node][1]
 
         for next_node in destinations:
-            weight = graph.weights[(current_node, next_node)] + weight_to_current_node
+            weight = graph.weights[(current_node, next_node)
+                                   ] + weight_to_current_node
             if next_node not in shortest_paths:
                 shortest_paths[next_node] = (current_node, weight)
             else:
@@ -105,11 +109,13 @@ def AStar(graph,initial,end):
                 if current_shortest_weight > weight:
                     shortest_paths[next_node] = (current_node, weight)
 
-        next_destinations = {node: shortest_paths[node] for node in shortest_paths if node not in visited}
+        next_destinations = {
+            node: shortest_paths[node] for node in shortest_paths if node not in visited}
         if not next_destinations:
             return "Route Not Possible"
         # next node is the destination with the lowest weight
-        current_node = min(next_destinations, key=lambda k: next_destinations[k][1])
+        current_node = min(next_destinations,
+                           key=lambda k: next_destinations[k][1])
 
     # Work back through destinations in shortest path
     path = []
@@ -128,12 +134,14 @@ def AStar(graph,initial,end):
 
 def main():
     print("Welcome to the traverse thingy ")
-    searchednode = input("choose what number you are trying to traverse to  \n")
-    searchednodeAlp = input("choose what letter you are trying to traverse to  \n")
-    breadthFirst(visited,queue,graphTer, searchednode)
+    searchednode = input(
+        "choose what number you are trying to traverse to  \n")
+    searchednodeAlp = input(
+        "choose what letter you are trying to traverse to  \n")
+    breadthFirst(visited, queue, graphTer, searchednode)
     print("\n This is the Depth First traverse : ")
-    deapthFirst(visitedSet,graphTer,searchednode)
-    #AStar(graph,'A','P')
+    deapthFirst(visitedSet, graphTer, searchednode)
+    # AStar(graph,'A','P')
 
 
 if __name__ == '__main__':
