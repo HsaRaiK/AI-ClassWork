@@ -1,5 +1,6 @@
 
 from collections import defaultdict
+import datetime
 
 graphTer = {
     '6': ['11', '3'],
@@ -138,11 +139,16 @@ def main():
         "choose what number you are trying to traverse to  \n")
     searchednodeAlp = input(
         "choose what letter you are trying to traverse to  \n")
+    timeS = datetime.datetime.now()
     breadthFirst(visited, queue, graphTer, searchednode)
+    timeOne = datetime.datetime.now()
     print("\n This is the Depth First traverse : ")
     deapthFirst(visitedSet, graphTer, searchednode)
-    # AStar(graph,'A','P')
-
-
+    timeTwo = datetime.datetime.now()
+    AStar(graph,'A','P')
+    timeThree = datetime.datetime.now()
+    print("BFS took :  ", timeOne - timeS , " seconds")
+    print("DFS took :  ", timeTwo - timeOne  , " seconds")
+    print("A* took :  ", timeThree - timeTwo , " seconds")
 if __name__ == '__main__':
     main()
