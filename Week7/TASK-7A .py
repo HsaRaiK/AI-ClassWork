@@ -21,7 +21,7 @@ def main():
     for i in range(n):
         result = cointoss()
         print(result)
-        if result =="H":
+        if result =="H": 
             numb_Heads += 1
         if result =="T":
             numb_Tails += 1
