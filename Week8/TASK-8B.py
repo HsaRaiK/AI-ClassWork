@@ -41,5 +41,12 @@ plt.show()
 plt.scatter(x3,x4) # Sepal length vs  Petal length
 plt.show()
 
-
+plt.scatter(species,x1) #Petal Witdh according to species
+plt.show()
+plt.scatter(species,x2) #Sepal Width according to species
+plt.show()
+plt.scatter(species,x3) #Sepal Lenght according to species
+plt.show()
+plt.scatter(species,x4) #Petal Length according to species
+plt.show()
 
