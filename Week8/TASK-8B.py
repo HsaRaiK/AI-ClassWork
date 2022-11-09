@@ -28,17 +28,17 @@ x3 = np.array(sl).reshape(-1,1)
 x4 = np.array(pl).reshape(-1,1)
 
 
-plt.scatter(x1,x4)
+plt.scatter(x1,x4) # Petal Width vs Petal length
 plt.show()
-plt.scatter(x1,x2)
+plt.scatter(x1,x2) # Peteal Width vs Sepal width
 plt.show()
-plt.scatter(x1,x3)
+plt.scatter(x1,x3) # Petal Width vs Sepal length 
 plt.show()
-plt.scatter(x2,x3)
+plt.scatter(x2,x3) # Sepal width vs Sepal length
 plt.show()
-plt.scatter(x2,x4)
+plt.scatter(x2,x4) # Sepal width vs Petal length
 plt.show()
-plt.scatter(x3,x4)
+plt.scatter(x3,x4) # Sepal length vs  Petal length
 plt.show()
 
 
